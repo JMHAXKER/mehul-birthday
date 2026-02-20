@@ -7,14 +7,14 @@ import { ChevronRight } from 'lucide-react'
 
 const infoboxData = {
   name: 'Mehul',
-  image: '/mehul-portrait.png',
+  image: '/mehul-portrait.jpeg',
   caption: 'Mehul in 2026',
   birthDate: '22 February 2007',
   birthPlace: 'India',
   age: 19,
   nationality: 'Indian',
   status: 'Active',
-  affiliation: 'MOSQUAD',
+  affiliation: 'LOYALITY ON PEAK',
   occupation: 'Student',
   knownFor: 'Loyalty, Strategic Thinking',
   coreTrait: 'Loyalty',
@@ -106,7 +106,7 @@ export default function DossierPage() {
             {/* Article Text */}
             <p className="text-sm leading-relaxed mb-4 font-[family-name:var(--font-inter)] text-[#202122]">
               <b>Mehul</b> (born 22 February 2007) is an Indian individual known for his loyalty and strategic thinking. 
-              He is affiliated with <span className="text-[#0645ad] hover:underline cursor-pointer">MOSQUAD</span> and 
+              He is affiliated with <span className="text-[#0645ad] hover:underline cursor-pointer">GOP GOP GOP!!! </span> and 
               has been classified as an active subject in the Archive System since 2007. His operational mode is 
               characterized as calm and strategic.
             </p>
@@ -191,7 +191,7 @@ export default function DossierPage() {
                 <h4 className="text-sm font-bold text-[#54595d] mb-2 font-[family-name:var(--font-inter)]">See also</h4>
                 <ul className="text-sm text-[#0645ad] space-y-1 font-[family-name:var(--font-inter)]">
                   <li className="hover:underline cursor-pointer">• Companion File R-01</li>
-                  <li className="hover:underline cursor-pointer">• MOSQUAD Affiliation</li>
+                  <li className="hover:underline cursor-pointer">• LOYAL PERSON Affiliation</li>
                   <li className="hover:underline cursor-pointer">• Version 19 Documentation</li>
                 </ul>
               </div>
@@ -235,7 +235,7 @@ export default function DossierPage() {
               
               {/* Gallery note */}
               <p className="text-xs text-[#54595d] mt-3 italic font-[family-name:var(--font-inter)]">
-                Note: Replace placeholder images with personal photos. Upload images to <code className="bg-[#f8f9fa] px-1">/public/</code> folder.
+                Note: BC HAVEE TO PAPA KE!!!! (MAZAAK LADALE MAINE KAHAHA GOP GOP GOP ) <code className="bg-[#f8f9fa] px-1"> KEEE.
               </p>
             </motion.section>
 
@@ -244,7 +244,7 @@ export default function DossierPage() {
               <h4 className="text-sm font-bold text-[#54595d] mb-2 font-[family-name:var(--font-inter)]">References</h4>
               <ol className="text-xs text-[#0645ad] space-y-1 font-[family-name:var(--font-inter)]">
                 <li className="hover:underline cursor-pointer">^ &quot;Archive System Classification Report&quot;. 2026.</li>
-                <li className="hover:underline cursor-pointer">^ &quot;MOSQUAD Affiliation Records&quot;. 2026.</li>
+                <li className="hover:underline cursor-pointer">^ &quot;BC!!!Affiliation Records&quot;. 2026.</li>
               </ol>
             </div>
 
