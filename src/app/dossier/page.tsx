@@ -234,9 +234,9 @@ export default function DossierPage() {
               </div>
               
               {/* Gallery note */}
-              <p className="text-xs text-[#54595d] mt-3 italic font-[family-name:var(--font-inter)]">
-                Note: BC HAVEE TO PAPA KE!!!! (MAZAAK LADALE MAINE KAHAHA GOP GOP GOP ) <code className="bg-[#f8f9fa] px-1"> KEEE.
-              </p>
+            <p className="text-xs text-[#54595d] mt-3 italic font-[family-name:var(--font-inter)]">
+  Note: BC HAVEE TO PAPA KE!!!! (MAZAAK LADALE MAINE KAHAHA GOP GOP GOP) <code className="bg-[#f8f9fa] px-1">KEEE</code>.
+</p>
             </motion.section>
 
             {/* References */}
