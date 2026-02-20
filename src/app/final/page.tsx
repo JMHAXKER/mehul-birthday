@@ -313,7 +313,7 @@ export default function BirthdayPage() {
           <p className="text-xs tracking-[0.2em] uppercase text-[#d4a574] mt-1">Fully Activated</p>
           
           <p className="text-[10px] text-[#a09080] mt-8 opacity-60">
-            Archive System • 2024 • With Love
+            Archive System • 2026 • With Love
           </p>
         </motion.div>
 
