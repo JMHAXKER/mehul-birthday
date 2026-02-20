@@ -49,7 +49,7 @@ export default function BirthdayPage() {
     canvas.width = width
     canvas.height = height
 
-    // Particle Class defined inside useEffect to avoid stale closures
+    // Particle Class
     class Particle {
       x: number
       y: number
@@ -57,7 +57,6 @@ export default function BirthdayPage() {
       speedX: number
       speedY: number
       color: string
-      opacity: number
       
       constructor() {
         this.x = Math.random() * width
@@ -65,19 +64,16 @@ export default function BirthdayPage() {
         this.size = Math.random() * 3 + 1
         this.speedX = (Math.random() - 0.5) * 0.5
         this.speedY = (Math.random() - 0.5) * 0.5
-        this.color = `rgba(212, 165, 116, ${Math.random() * 0.5 + 0.2})` // Pastel Gold
-        this.opacity = Math.random() * 0.5 + 0.3
+        this.color = `rgba(212, 165, 116, ${Math.random() * 0.5 + 0.2})`
       }
 
       update(gyroX: number, gyroY: number) {
-        // Add gentle floating motion + Gyro influence
         const forceX = gyroX * 0.05
         const forceY = gyroY * 0.05
         
         this.x += this.speedX + forceX + Math.sin(Date.now() * 0.001 + this.y * 0.01) * 0.2
         this.y += this.speedY + forceY + Math.cos(Date.now() * 0.001 + this.x * 0.01) * 0.2
 
-        // Wrap around screen
         if (this.x < 0) this.x = width
         if (this.x > width) this.x = 0
         if (this.y < 0) this.y = height
@@ -92,10 +88,8 @@ export default function BirthdayPage() {
       }
     }
 
-    // Initialize Particles
     particlesRef.current = Array.from({ length: 60 }, () => new Particle())
 
-    // Animation Loop
     const animate = () => {
       ctx.clearRect(0, 0, width, height)
       
@@ -109,7 +103,6 @@ export default function BirthdayPage() {
 
     animate()
 
-    // --- Event Handlers ---
     const handleResize = () => {
       width = window.innerWidth
       height = window.innerHeight
@@ -118,11 +111,9 @@ export default function BirthdayPage() {
     }
 
     const handleMouseMove = (e: MouseEvent) => {
-      // Center-origin coordinates
       mouseRef.current.x = (e.clientX - width / 2) 
       mouseRef.current.y = (e.clientY - height / 2)
-      // If no gyro, use mouse as "fake gyro" force
-      if (!window.DeviceOrientationEvent) {
+      if (!window.DeviceOrientationEvent || gyroRef.current.x === 0) {
         gyroRef.current.x = mouseRef.current.x / 50
         gyroRef.current.y = mouseRef.current.y / 50
       }
@@ -130,12 +121,11 @@ export default function BirthdayPage() {
 
     const handleOrientation = (e: DeviceOrientationEvent) => {
       if (e.gamma !== null && e.beta !== null) {
-        gyroRef.current.x = e.gamma // Left/Right tilt
-        gyroRef.current.y = e.beta - 45 // Front/Back tilt (normalized)
+        gyroRef.current.x = e.gamma 
+        gyroRef.current.y = e.beta - 45 
       }
     }
 
-    // Request iOS Permission
     const requestGyro = async () => {
       if (typeof (DeviceOrientationEvent as any).requestPermission === 'function') {
         try {
@@ -154,7 +144,6 @@ export default function BirthdayPage() {
     window.addEventListener('resize', handleResize)
     window.addEventListener('mousemove', handleMouseMove)
     
-    // Attempt to enable gyro on first click
     const clickHandler = () => {
       requestGyro()
       document.removeEventListener('click', clickHandler)
@@ -174,14 +163,11 @@ export default function BirthdayPage() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-[#fff0f5] via-[#fdfbf7] to-[#f0f8ff] font-sans text-[#4a3f47]">
       
-      {/* 1. Particle Background Canvas */}
       <canvas ref={canvasRef} className="fixed inset-0 z-0 pointer-events-none" />
 
-      {/* 2. Decorative Glow Orbs */}
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-pink-200/30 rounded-full blur-3xl animate-pulse" />
       <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-orange-100/40 rounded-full blur-3xl animate-pulse delay-1000" />
 
-      {/* 3. Main Content Container */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 py-12">
         
         {/* Card 1: Intro Quote */}
@@ -209,7 +195,6 @@ export default function BirthdayPage() {
         >
           <div className="bg-white/70 backdrop-blur-xl border border-white/90 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
             
-            {/* Header Decorations */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-pink-200 via-rose-300 to-orange-200" />
             
             <div className="text-center mb-6">
@@ -225,16 +210,15 @@ export default function BirthdayPage() {
               </h2>
             </div>
 
-            {/* CSS Art: Cake */}
+            {/* CSS Art: Cake - FIXED CLASSES */}
             <div className="relative w-40 h-48 mx-auto my-8" style={{ perspective: '1000px' }}>
-              {/* Floating Animation Container */}
               <motion.div 
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-full h-full"
               >
-                {/* Top Layer */}
-                <div className="absolute left-1/2 -translate-x-1/2 bottom-[105px] w-16 h-12 bg-gradient-to-b from-light pink to-pink-50 rounded-lg shadow-sm border border-white" />
+                {/* Top Layer - Corrected 'from-light pink' to 'from-white' */}
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-[105px] w-16 h-12 bg-gradient-to-b from-white to-pink-50 rounded-lg shadow-sm border border-white" />
                 
                 {/* Middle Layer */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-[60px] w-24 h-14 bg-gradient-to-b from-pink-100 to-pink-200 rounded-lg shadow-md" />
@@ -254,7 +238,6 @@ export default function BirthdayPage() {
                   {[0, 1, 2].map((i) => (
                     <div key={i} className="relative">
                       <div className="w-1.5 h-8 bg-gradient-to-r from-pink-100 via-white to-pink-100 rounded-t-sm shadow-inner" />
-                      {/* Flame */}
                       <motion.div 
                         animate={{ scale: [1, 1.2, 1], opacity: [0.8, 1, 0.8] }}
                         transition={{ duration: 0.3 + (i * 0.1), repeat: Infinity }}
@@ -270,10 +253,8 @@ export default function BirthdayPage() {
               All of that and more. You deserve it.
             </p>
             
-            {/* Divider */}
             <div className="my-6 h-px bg-gradient-to-r from-transparent via-[#d4a574]/30 to-transparent" />
 
-            {/* Quote Carousel */}
             <div className="h-24 flex flex-col justify-center items-center relative">
               {quotes.map((q, i) => (
                 <motion.div
@@ -296,7 +277,6 @@ export default function BirthdayPage() {
           </div>
         </motion.div>
 
-        {/* Card 3: Footer / Version */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={isMounted ? { opacity: 1 } : {}}
@@ -313,7 +293,7 @@ export default function BirthdayPage() {
           <p className="text-xs tracking-[0.2em] uppercase text-[#d4a574] mt-1">Fully Activated</p>
           
           <p className="text-[10px] text-[#a09080] mt-8 opacity-60">
-            Archive System • 2026 • With Love
+            Archive System • 2026 • With Love (BC!!)
           </p>
         </motion.div>
 
