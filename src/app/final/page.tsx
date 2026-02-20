@@ -234,7 +234,7 @@ export default function BirthdayPage() {
                 className="relative w-full h-full"
               >
                 {/* Top Layer */}
-                <div className="absolute left-1/2 -translate-x-1/2 bottom-[105px] w-16 h-12 bg-gradient-to-b from-white to-pink-50 rounded-lg shadow-sm border border-white" />
+                <div className="absolute left-1/2 -translate-x-1/2 bottom-[105px] w-16 h-12 bg-gradient-to-b from-light pink to-pink-50 rounded-lg shadow-sm border border-white" />
                 
                 {/* Middle Layer */}
                 <div className="absolute left-1/2 -translate-x-1/2 bottom-[60px] w-24 h-14 bg-gradient-to-b from-pink-100 to-pink-200 rounded-lg shadow-md" />
